@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>nome do cliente - {{ cliente.nome }}</h1>
+    <h2>cpf do cliente - {{ cliente.cpf }}</h2>
   </div>
 </template>
 
@@ -8,11 +9,11 @@
 export default {
   data() {
     return {
-      cliente: { nome: '' },
+      cliente: {},
     }
   },
-  created() {
-    this.cliente = this.$axios.$get('/clientes/1')
+  async fetch() {
+    this.cliente = await this.$axios.$get('/clientes/1')
   },
 }
 </script>
